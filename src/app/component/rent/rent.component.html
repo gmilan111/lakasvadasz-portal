@@ -1,0 +1,51 @@
+<div class="mb-4">
+  <button type="button" (click)="addRent()" class="btn btn-primary d-flex align-items-center p-3"><mat-icon class="my-auto">add_circle</mat-icon></button>
+</div>
+
+<div class="d-flex flex-column gap-3">
+@for (rent of rents; track $index) {
+  <mat-card class="shadow-custom">
+    <mat-accordion>
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header class="py-5 mx-auto">
+          <mat-panel-title>
+            <h1 class="text-white my-auto">{{ rent.settlement }}</h1>
+          </mat-panel-title>
+          <mat-panel-description>
+            <h2 class="fw-bold my-auto">{{ rent.price }}Ft</h2>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-card-content>
+          <h4 class="fw-bold mb-4">Mikortól költözhető: {{ rent.move_in_date }}</h4>
+          <div class="row mb-3">
+            <div class="col-md-2">
+              <mat-icon>bed</mat-icon>
+              <p>{{rent.rooms}}</p>
+            </div>
+            <div class="col-md-2">
+              <mat-icon>crop_square</mat-icon>
+              <p>{{rent.size}} m<sup>2</sup></p>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <h2 class="mb-1">Leírás</h2>
+            <p class="card-text">{{rent.description}}</p>
+          </div>
+
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="d-flex gap-2">
+            <div mat-ripple [matRippleTrigger]="trigger" #trigger>
+              <button mat-flat-button (click)="editRent(rent.key!)"><mat-icon>edit</mat-icon> Módosítás</button>
+            </div>
+
+            <div mat-ripple [matRippleTrigger]="trigger" #trigger>
+              <button mat-flat-button color="accent" (click)="removeRent(rent.key!)"><mat-icon>delete</mat-icon> Törlés</button>
+            </div>
+          </div>
+        </mat-card-actions>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card>
+}
+</div>

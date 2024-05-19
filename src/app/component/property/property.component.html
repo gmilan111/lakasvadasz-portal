@@ -1,0 +1,64 @@
+<div class="mb-4">
+  <button type="button" (click)="addPorperty()" class="btn btn-primary d-flex align-items-center p-3"><mat-icon class="my-auto">add_circle</mat-icon></button>
+  <h1 class="mt-5">Szegedi Lakások: {{ szeged ? szeged.length : '' }}</h1>
+</div>
+
+<div class="d-flex flex-column gap-3 text-white">
+    @for (property of properties; track $index) {
+      @if (!property.is_sold) {
+          <mat-card class="shadow-custom" >
+            <mat-accordion>
+              <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header class="py-5 mx-auto">
+                  <mat-panel-title>
+                    <h1 class="text-white my-auto">{{ property.settlement }}</h1>
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    <h1 class="fw-bold my-auto">{{ property.price }}Ft</h1>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-card-content>
+                  <div class="row mb-3 ">
+                    <div class="col-md-2">
+                      <mat-icon>bed</mat-icon>
+                      <p>{{ property.rooms }}</p>
+                    </div>
+                    <div class="col-md-2">
+                      <mat-icon>crop_square</mat-icon>
+                      <p>{{ property.size }} m<sup>2</sup></p>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <h2 class="mb-1">Leírás</h2>
+                    <p class="card-text">{{ property.description }}</p>
+                  </div>
+
+                </mat-card-content>
+                <mat-card-actions>
+                  <div class="d-flex gap-2">
+                    <div class="row">
+                      <div class="col-md-4 mb-2">
+                        <div matRipple [matRippleTrigger]="trigger" #trigger>
+                          <button mat-flat-button (click)="editProperty(property.key!)"><mat-icon>edit</mat-icon> Módosítás</button>
+                        </div>
+                      </div>
+                      <div class="col-md-4 mb-2">
+                        <div matRipple [matRippleTrigger]="trigger" #trigger>
+                          <button mat-flat-button color="accent" (click)="removeProperty(property.key!)" #trigger><mat-icon>delete</mat-icon> Törlés</button>
+                        </div>
+                      </div>
+                      <div class="col-md-4 mb-2">
+                        <div matRipple [matRippleTrigger]="trigger" #trigger>
+                          <button mat-flat-button color="warn" (click)="sellProperty(property.key!)" #trigger><mat-icon>sell</mat-icon> Eladás</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </mat-card-actions>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </mat-card>
+      }
+    }
+
+</div>

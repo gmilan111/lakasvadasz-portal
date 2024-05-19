@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "lakasvadasz-portal"
+  },
+  "targets": {
+    "lakasvadasz-portal": {
+      "hosting": {
+        "lakasvadasz-portal": [
+          "lakasvadasz-portal"
+        ]
+      }
+    }
+  }
+}

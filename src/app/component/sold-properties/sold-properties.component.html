@@ -1,0 +1,21 @@
+<div class="d-flex flex-column gap-3">
+  @for (sold_property of sold_properties; track $index) {
+    <mat-card class="shadow-custom ">
+      <mat-card-content>
+        <h1 class="text-white my-auto mb-4">{{ sold_property.settlement }}</h1>
+        <h1 class="fw-bold text-white">{{ sold_property.price }} Ft</h1>
+        <div class="row mb-3">
+          <h2 class="mb-1">Leírás</h2>
+          <p class="card-text">{{sold_property.description}}</p>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="d-flex gap-2">
+          <div matRipple [matRippleTrigger]="trigger" #trigger>
+            <button mat-flat-button color="accent" (click)="removeSoldProperty(sold_property.key!)"><mat-icon>delete</mat-icon> Törlés</button>
+          </div>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  }
+</div>

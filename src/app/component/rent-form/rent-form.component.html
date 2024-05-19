@@ -1,0 +1,60 @@
+<div class="p-5">
+  <h4 class="text-white">{{inputdata.title}}</h4>
+  <form [formGroup]="rentFrom" style="height: 450px">
+    <div class="mb-3">
+      <mat-form-field class="w-100">
+        <mat-label>Település</mat-label>
+        <input matInput formControlName="settlement">
+      </mat-form-field>
+      @if (rentFrom.get('settlement')?.hasError('required') && rentFrom.get('settlement')?.touched) {
+        <div class="form-text text-danger">Kötelező települést megadni!</div>
+      }
+    </div>
+
+    <div class="mb-3">
+      <mat-form-field class="w-100">
+        <mat-label>Ár</mat-label>
+        <input matInput formControlName="price">
+      </mat-form-field>
+      @if (rentFrom.get('price')?.hasError('required') && rentFrom.get('price')?.touched) {
+        <div class="form-text text-danger">Kötelező árat megadni!</div>
+      }
+    </div>
+
+    <div class="mb-5">
+      <label for="date" class="form-label text-white">Mikortól költözhető</label>
+      <input type="date" class="form-control" id="date" formControlName="move_in_date">
+      @if(rentFrom.get('move_in_date')?.hasError('required') && rentFrom.get('move_in_date')?.touched){
+        <div class="form-text text-danger">Kötelező dátumot megadni!</div>
+      }
+    </div>
+    <div class="mb-3">
+      <mat-form-field class="w-100">
+        <mat-label>Szobaszám</mat-label>
+        <input matInput formControlName="rooms">
+      </mat-form-field>
+      @if (rentFrom.get('rooms')?.hasError('required') && rentFrom.get('rooms')?.touched) {
+        <div class="form-text text-danger">Kötelező szobaszámot megadni!</div>
+      }
+    </div>
+
+    <div class="mb-3">
+      <mat-form-field class="w-100">
+        <mat-label>Méret</mat-label>
+        <input matInput formControlName="size">
+      </mat-form-field>
+      @if (rentFrom.get('size')?.hasError('required') && rentFrom.get('size')?.touched) {
+        <div class="form-text text-danger">Kötelező méretet megadni!</div>
+      }
+    </div>
+
+    <div class="mb-3">
+      <mat-form-field class="w-100">
+        <mat-label>Leírás</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+    </div>
+    <button mat-flat-button (click)="onSubmit()" color="primary">{{ inputdata.btn }}</button>
+
+  </form>
+</div>

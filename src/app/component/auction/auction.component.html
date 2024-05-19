@@ -1,0 +1,49 @@
+<div class="mb-4">
+  <button type="button" (click)="addAuction()" class="btn btn-primary d-flex align-items-center p-3"><mat-icon class="my-auto">add_circle</mat-icon></button>
+</div>
+
+<div class="d-flex flex-column gap-3">
+  @for (auction of auctions; track $index) {
+    <mat-card class="shadow-custom">
+      <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header class="py-5 mx-auto">
+            <mat-panel-title>
+              <h1 class="text-white my-auto">{{ auction.settlement }}</h1>
+            </mat-panel-title>
+            <mat-panel-description>
+              <h1 class="fw-bold my-auto">Kezdőár: {{ auction.price }} Ft</h1>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-card-content>
+            <h4 class="fw-bold mb-4">Határidő: {{ auction.deadline }}</h4>
+            <div class="row mb-3">
+              <div class="col-md-2">
+                <mat-icon>bed</mat-icon>
+                <p>{{auction.rooms}}</p>
+              </div>
+              <div class="col-md-2">
+                <mat-icon>crop_square</mat-icon>
+                <p>{{auction.size}} m<sup>2</sup></p>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <h2 class="mb-1">Leírás</h2>
+              <p class="card-text">{{auction.description}}</p>
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <div class="d-flex gap-2">
+              <div matRipple [matRippleTrigger]="trigger" #trigger>
+                <button mat-flat-button (click)="editAuction(auction.key!)"><mat-icon>edit</mat-icon> Módosítás</button>
+              </div>
+              <div matRipple [matRippleTrigger]="trigger" #trigger>
+                <button mat-flat-button (click)="removeAuction(auction.key!)" color="accent"><mat-icon>delete</mat-icon> Törlés</button>
+              </div>
+            </div>
+          </mat-card-actions>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card>
+  }
+</div>
