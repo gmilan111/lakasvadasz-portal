@@ -1,5 +1,12 @@
 # LakasvadaszPortal
 
+Szia!
+
+Ha bármi probléma van a programmal nyugodtan írj. Emailem: gebeimilan@gmail.com
+Én elvileg 36,5 pontot számoltam (-8 ugye mert későn adtam be :(... )
+Előre is köszi a javítást!
+Gebei Milán
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.
 
 ## Development server
